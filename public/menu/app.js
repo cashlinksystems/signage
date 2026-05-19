@@ -197,7 +197,14 @@ function renderExtras(extras) {
 
   const list = createElement("div", "extras-list");
   for (const item of extras.items) {
-    list.append(createElement("span", "extras-item", item));
+    const row = createElement("div", "extras-item");
+    row.append(createElement("span", "extras-item-name", item.name));
+    if (item.price && item.price !== "0") {
+      const priceEl = createPriceElement(`+${item.price}`);
+      priceEl.classList.add("extras-price");
+      row.append(priceEl);
+    }
+    list.append(row);
   }
 
   extrasBar.append(list);
@@ -334,7 +341,7 @@ function csvToExtras(text) {
     }
 
     if (name) {
-      extras.items.push(price ? `${name} ${formatPrice(price)}` : name);
+      extras.items.push({ name, price });
     }
   }
 

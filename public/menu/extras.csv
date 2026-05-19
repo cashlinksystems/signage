@@ -1,10 +1,12 @@
 section;name;price
-Toppings;+ csípős;0
-Toppings;+ csípős szósz;300
-Toppings;+ mézes csípős;300
-Toppings;+ feta sajt;300
-Toppings;+ trappista sajt;300
-Toppings;+ öntet;300
-Toppings;+ pita;300
-Toppings;+ kukorica;250
-Toppings;+ paradicsom;250
+Feltétek;+ csípős;0
+Feltétek;+ csípős szósz;300
+Feltétek;+ mézes csípős;300
+Feltétek;+ feta sajt;300
+Feltétek;+ trappista sajt;300
+Feltétek;+ öntet;300
+Feltétek;+ pita;300
+Feltétek;+ kukorica;250
+Feltétek;+ paradicsom;250
+Feltétek;+ hagyma;50
+Feltétek;+ saláta;150
