@@ -253,17 +253,6 @@ body {
   }
 }
 
-@keyframes durumImageSlideIn {
-  from {
-    opacity: 0;
-    transform: translate(-90px, -300px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate(0, -300px);
-  }
-}
 
 @keyframes typeReveal {
   from {
@@ -347,7 +336,7 @@ body {
 
 .menu-section-durum .menu-section-image {
   margin-top: 0;
-  animation-name: durumImageSlideIn;
+  transform: translateY(42px);
 }
 
 .menu-section-durum .menu-section-content {
