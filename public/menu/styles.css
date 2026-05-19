@@ -31,7 +31,7 @@ body {
   left: var(--board-left, 0);
   top: var(--board-top, 0);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-columns: minmax(0, 1fr) 380px;
   grid-template-rows: minmax(0, 1fr);
   gap: 0;
   width: var(--board-width, 100vw);
@@ -726,8 +726,25 @@ body {
 
 .extras-item {
   min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.extras-item-name {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.extras-price {
+  flex: 0 0 auto;
+  font-size: clamp(11px, calc(var(--menu-vw, 1vw) * 0.72), 15px);
+  min-height: 20px;
+  min-width: unset;
+  padding: 3px 8px;
 }
 
 .menu-error {
