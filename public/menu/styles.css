@@ -462,7 +462,7 @@ body {
 
 .menu-column-left .menu-item {
   width: 100%;
-  grid-template-columns: 160px minmax(0, 1fr) 170px;
+  grid-template-columns: 160px minmax(0, 1fr) 100px;
   column-gap: 12px;
 }
 
@@ -491,10 +491,12 @@ body {
 
 .menu-column-left .menu-item .item-price {
   justify-content: flex-end;
+  transform: translateX(80px);
 }
 
 .menu-column-left .menu-item-primary .item-price {
   justify-content: flex-end;
+  transform: translateX(80px);
 }
 
 .menu-column-left .item-note {
