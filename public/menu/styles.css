@@ -489,6 +489,10 @@ body {
   padding-top: 0.08em;
 }
 
+.menu-column-left .menu-item-addon .item-note {
+  font-size: clamp(14px, calc(var(--menu-vw, 1vw) * 1.2), 24px);
+}
+
 .fries-flyer {
   position: absolute;
   right: -72px;
