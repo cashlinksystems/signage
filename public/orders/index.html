@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rendelések TV</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="screen">
+      <section class="promo-panel" aria-label="Promóció">
+        <iframe id="promotionFrame" title="Promóció"></iframe>
+      </section>
+
+      <section class="orders-panel">
+        <section class="column in-progress">
+          <header>
+            <h1>Készítjük</h1>
+          </header>
+          <div id="inProgressList" class="order-list"></div>
+        </section>
+
+        <section class="column ready">
+          <header>
+            <h1>Elkészült</h1>
+          </header>
+          <div id="readyList" class="order-list"></div>
+        </section>
+
+        <div class="bottom-strip">Köszönjük a türelmet</div>
+      </section>
+    </main>
+
+    <div id="connectionError" class="connection-error" hidden>Nem elérhető az adatforrás</div>
+
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

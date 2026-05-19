@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menütábla TV</title>
+    <link rel="stylesheet" href="./styles.css?v=15">
+  </head>
+  <body>
+    <main class="menu-board" aria-label="Menütábla">
+      <section class="board-panel">
+        <div class="left-stage">
+          <div id="leftColumn" class="menu-column menu-column-left"></div>
+        </div>
+        <div class="column-divider" aria-hidden="true"></div>
+        <div id="rightColumn" class="menu-column menu-column-right"></div>
+      </section>
+
+      <aside id="extrasBar" class="extras-bar" aria-label="Extrák és szószok"></aside>
+    </main>
+
+    <div id="menuError" class="menu-error" hidden>Nem sikerült betölteni a menüt.</div>
+
+    <script src="./config.js?v=15"></script>
+    <script src="./app.js?v=15"></script>
+  </body>
+</html>
