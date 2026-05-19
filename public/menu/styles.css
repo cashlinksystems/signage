@@ -497,7 +497,7 @@ body {
 .fries-flyer {
   position: absolute;
   left: 390px;
-  bottom: calc(100% - 50px);
+  bottom: calc(100% - 20px);
   width: min(280px, calc(var(--menu-vw, 1vw) * 22));
   pointer-events: none;
   opacity: 0;
