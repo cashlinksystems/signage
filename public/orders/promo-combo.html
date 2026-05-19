@@ -33,7 +33,7 @@
         padding: clamp(18px, 3.8vh, 32px) clamp(18px, 5vw, 34px) clamp(10px, 2vh, 18px);
         background:
           linear-gradient(180deg, rgba(255, 248, 235, 0.16) 0%, rgba(255, 255, 255, 0) 42%),
-          url("../assets/combo_bg2.png");
+          url("../assets/combo_bg3.png");
         background-repeat: no-repeat;
         background-position: center, center bottom;
         background-size: cover, 100% 100%;
@@ -131,62 +131,72 @@
         animation: priceShine 4s ease-in-out infinite;
       }
 
+      /* Food swap overlay */
+      .food-swap {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 52%;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .food-item {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+        mix-blend-mode: multiply;
+        transform: translateX(110%);
+        will-change: transform;
+      }
+
+      @keyframes foodSlideIn {
+        from { transform: translateX(110%); }
+        to   { transform: translateX(0); }
+      }
+
+      @keyframes foodSlideOut {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-110%); }
+      }
+
+      .food-item.slide-in {
+        animation: foodSlideIn 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+
+      .food-item.slide-out {
+        animation: foodSlideOut 0.85s cubic-bezier(0.55, 0, 0.75, 0.06) forwards;
+      }
+
+      .food-item.visible {
+        transform: translateX(0);
+      }
+
       @keyframes shine {
-        0%,
-        8% {
-          left: -75%;
-        }
-
-        38% {
-          left: 130%;
-        }
-
-        39%,
-        100% {
-          left: 130%;
-        }
+        0%, 8% { left: -75%; }
+        38%     { left: 130%; }
+        39%, 100% { left: 130%; }
       }
 
       @keyframes tilePulse {
-        0%,
-        8%,
-        38%,
-        100% {
-          transform: scale(1);
-        }
-
-        23% {
-          transform: scale(1.02);
-        }
+        0%, 8%, 38%, 100% { transform: scale(1); }
+        23% { transform: scale(1.02); }
       }
 
       @keyframes pricePop {
-        0%,
-        45%,
-        90%,
-        100% {
-          transform: scale(1);
-        }
-
-        68% {
-          transform: scale(1.045);
-        }
+        0%, 45%, 90%, 100% { transform: scale(1); }
+        68% { transform: scale(1.045); }
       }
 
       @keyframes priceShine {
-        0%,
-        45% {
-          left: -46%;
-        }
-
-        82% {
-          left: 116%;
-        }
-
-        83%,
-        100% {
-          left: 116%;
-        }
+        0%, 45% { left: -46%; }
+        82%      { left: 116%; }
+        83%, 100% { left: 116%; }
       }
 
       @media (min-aspect-ratio: 4 / 3) {
@@ -197,7 +207,7 @@
           padding: clamp(28px, 5vh, 58px) clamp(28px, 5vw, 72px);
           background:
             linear-gradient(90deg, rgba(255, 248, 235, 0.16) 0%, rgba(255, 255, 255, 0) 44%),
-            url("../assets/combo_bg2.png");
+            url("../assets/combo_bg3.png");
           background-repeat: no-repeat;
           background-position: center, center bottom;
           background-size: cover, 100% 100%;
@@ -231,6 +241,13 @@
           box-shadow: none;
         }
 
+        .food-swap {
+          right: 0;
+          left: auto;
+          width: 56%;
+          height: 68%;
+          bottom: 0;
+        }
       }
     </style>
   </head>
@@ -243,6 +260,51 @@
         </div>
         <p class="line">Kebab, sültkrumpli és 0,33l dobozos üdítő</p>
       </div>
+
+      <div class="food-swap">
+        <img class="food-item" id="foodKebab" src="../assets/kebab_gem2.png" alt="Kebab">
+        <img class="food-item" id="foodDurum" src="../assets/Durum_gem2.png" alt="Dürüm">
+      </div>
     </section>
+
+    <script>
+      const kebab = document.getElementById('foodKebab');
+      const durum = document.getElementById('foodDurum');
+
+      const VISIBLE_MS = 4500;
+      const SLIDE_MS = 850;
+
+      function slideIn(el) {
+        el.classList.remove('visible', 'slide-out');
+        void el.offsetWidth; // force reflow so animation restarts cleanly
+        el.classList.add('slide-in');
+        el.addEventListener('animationend', () => {
+          el.classList.remove('slide-in');
+          el.classList.add('visible');
+        }, { once: true });
+      }
+
+      function slideOut(el) {
+        el.classList.remove('visible', 'slide-in');
+        void el.offsetWidth;
+        el.classList.add('slide-out');
+        el.addEventListener('animationend', () => {
+          el.classList.remove('slide-out');
+          // reset off-screen right (default CSS transform) without transition
+        }, { once: true });
+      }
+
+      const items = [kebab, durum];
+      let current = 0;
+
+      slideIn(items[0]);
+
+      setInterval(() => {
+        const next = (current + 1) % items.length;
+        slideOut(items[current]);
+        slideIn(items[next]);
+        current = next;
+      }, VISIBLE_MS);
+    </script>
   </body>
 </html>
