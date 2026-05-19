@@ -747,6 +747,7 @@ body {
   min-width: 72px;
   padding: 4px 10px;
   justify-content: flex-end;
+  isolation: isolate;
 }
 
 .menu-error {
