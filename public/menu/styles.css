@@ -462,21 +462,19 @@ body {
 
 .menu-column-left .menu-item {
   width: 100%;
-  grid-template-columns: 150px minmax(110px, 1fr) 260px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   column-gap: 12px;
 }
 
 .menu-column-left .item-price {
-  width: 214px;
-  min-width: 214px;
+  min-width: unset;
   justify-self: end;
   margin-left: auto;
   justify-content: flex-end;
 }
 
 .menu-column-left .menu-item-primary .item-price {
-  width: 214px;
-  min-width: 214px;
+  min-width: unset;
 }
 
 .menu-column-left .menu-item:nth-child(2n) .item-price {
@@ -493,12 +491,10 @@ body {
 
 .menu-column-left .menu-item .item-price {
   justify-content: flex-end;
-  transform: translateX(54px);
 }
 
 .menu-column-left .menu-item-primary .item-price {
   justify-content: flex-end;
-  transform: translateX(54px);
 }
 
 .menu-column-left .item-note {
