@@ -479,12 +479,12 @@ body {
 
 .menu-column-left .menu-item .item-price {
   justify-content: flex-end;
-  transform: translateX(60px);
+  transform: translateX(40px);
 }
 
 .menu-column-left .menu-item-primary .item-price {
   justify-content: flex-end;
-  transform: translateX(60px);
+  transform: translateX(40px);
 }
 
 .menu-column-left .item-note {
