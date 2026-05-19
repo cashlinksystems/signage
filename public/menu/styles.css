@@ -477,18 +477,6 @@ body {
   min-width: unset;
 }
 
-.menu-column-left .menu-item:nth-child(2n) .item-price {
-  transform: none;
-}
-
-.menu-column-left .menu-item:nth-child(3n) .item-price {
-  transform: none;
-}
-
-.menu-column-left .menu-item-primary .item-price {
-  transform: none;
-}
-
 .menu-column-left .menu-item .item-price {
   justify-content: flex-end;
   transform: translateX(80px);
