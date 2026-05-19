@@ -489,6 +489,10 @@ body {
   padding-top: 0.08em;
 }
 
+.menu-column-left .menu-item-primary .item-note {
+  margin-left: 18px;
+}
+
 
 .fries-flyer {
   position: absolute;
@@ -738,10 +742,10 @@ body {
 
 .extras-price {
   flex: 0 0 auto;
-  font-size: clamp(11px, calc(var(--menu-vw, 1vw) * 0.72), 15px);
-  min-height: 20px;
-  min-width: 60px;
-  padding: 3px 8px;
+  font-size: clamp(13px, calc(var(--menu-vw, 1vw) * 0.88), 18px);
+  min-height: 24px;
+  min-width: 72px;
+  padding: 4px 10px;
   justify-content: flex-end;
 }
 
