@@ -719,7 +719,7 @@ body {
 
 .extras-list {
   display: grid;
-  gap: 9px;
+  gap: 14px;
   min-width: 0;
   font-size: clamp(18px, calc(var(--menu-vw, 1vw) * 1.05), 25px);
   font-weight: 800;
