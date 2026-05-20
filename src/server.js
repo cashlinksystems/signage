@@ -207,13 +207,34 @@ async function getOrders(includeDebug = false) {
 
   const [rows] = await pool.execute(
     `
-      SELECT ${includeDebug ? 'allapot, ellenoldali, kelt, tipus, egyeb, extra' : 'allapot, ellenoldali'}
-      FROM szamlak
-      WHERE kelt = :orderDate
-        AND tipus = :orderType
-        AND egyeb = :deliveryType
-        AND LENGTH(COALESCE(extra, '')) < 3
-      ORDER BY ellenoldali ASC
+      SELECT ${includeDebug ? 'sz.allapot, sz.ellenoldali, sz.kelt, sz.tipus, sz.egyeb, sz.extra' : 'sz.allapot, sz.ellenoldali'}
+      FROM szamlak sz
+      WHERE sz.kelt = :orderDate
+        AND sz.tipus = :orderType
+        AND sz.egyeb = :deliveryType
+        AND LENGTH(COALESCE(sz.extra, '')) < 3
+        AND sz.Sorszam NOT IN (
+          SELECT sz2.Sorszam
+          FROM szamlak sz2
+          JOIN tetelek t ON t.Sorszam = sz2.Sorszam
+          WHERE sz2.kelt = :orderDate
+            AND sz2.tipus = :orderType
+          GROUP BY sz2.Sorszam
+          HAVING SUM(CASE WHEN t.fotipus NOT IN ('Ital', 'Egyéb')
+                               AND NOT (t.fotipus = 'Étel' AND t.Nev = 'Borravaló')
+                          THEN 1 ELSE 0 END) = 0
+
+          UNION
+
+          SELECT sz2.Sorszam
+          FROM szamlak sz2
+          JOIN tetelek t ON t.Sorszam = sz2.Sorszam
+          WHERE sz2.kelt = :orderDate
+            AND sz2.tipus = :orderType
+          GROUP BY sz2.Sorszam
+          HAVING SUM(t.Brutto) < 1000
+        )
+      ORDER BY sz.ellenoldali ASC
     `,
     { orderDate, orderType, deliveryType }
   );
