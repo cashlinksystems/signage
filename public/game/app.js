@@ -1,25 +1,23 @@
-function applyDisplayConfig() {
-  const config = window.GAME_CONFIG || {};
-  const targetWidth = Number(config.targetWidth || window.innerWidth);
-  const targetHeight = Number(config.targetHeight || window.innerHeight);
-  const zoom = Number(config.zoom || 1);
-  const fitMode = config.fitMode || "contain";
+const slides = Array.from(document.querySelectorAll(".slide"));
+const config = window.GAME_CONFIG || {};
+const menuDurationMs = Number(config.menuDurationMs || 10000);
+const promoDurationMs = Number(config.promoDurationMs || 10000);
 
-  document.documentElement.classList.add("configured-display");
+let activeIndex = 0;
 
-  const scaleX = window.innerWidth / targetWidth;
-  const scaleY = window.innerHeight / targetHeight;
-  const baseScale = fitMode === "cover" ? Math.max(scaleX, scaleY) : Math.min(scaleX, scaleY);
-  const scale = baseScale * zoom;
-  const left = Math.max(0, (window.innerWidth - targetWidth * scale) / 2);
-  const top = Math.max(0, (window.innerHeight - targetHeight * scale) / 2);
-
-  document.documentElement.style.setProperty("--board-width", `${targetWidth}px`);
-  document.documentElement.style.setProperty("--board-height", `${targetHeight}px`);
-  document.documentElement.style.setProperty("--board-scale", String(scale));
-  document.documentElement.style.setProperty("--board-left", `${left}px`);
-  document.documentElement.style.setProperty("--board-top", `${top}px`);
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("is-active", i === index);
+  });
 }
 
-applyDisplayConfig();
-window.addEventListener("resize", applyDisplayConfig);
+function nextSlide() {
+  activeIndex = (activeIndex + 1) % slides.length;
+  showSlide(activeIndex);
+
+  const duration = activeIndex === 0 ? menuDurationMs : promoDurationMs;
+  setTimeout(nextSlide, duration);
+}
+
+showSlide(activeIndex);
+setTimeout(nextSlide, menuDurationMs);

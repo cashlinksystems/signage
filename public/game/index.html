@@ -3,13 +3,34 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Játék TV</title>
+    <title>Nyereményjáték TV</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <main class="game-board" aria-label="Játék">
-      <h1>Hamarosan...</h1>
-    </main>
+    <div class="slide-stage">
+      <iframe id="menuFrame" class="slide menu-slide" src="/menu/" title="Menütábla"></iframe>
+
+      <section id="promoSlide" class="slide promo-slide" aria-label="Nyereményjáték">
+        <img class="promo-logo" src="/assets/jimmys-logo2025.png" alt="Jimmy's Kebab">
+
+        <div class="promo-phone" aria-hidden="true">
+          <div class="phone-body">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="phone-glow"></div>
+            </div>
+          </div>
+          <div class="sparkle sparkle-1">✦</div>
+          <div class="sparkle sparkle-2">✦</div>
+          <div class="sparkle sparkle-3">✦</div>
+          <div class="sparkle sparkle-4">✦</div>
+        </div>
+
+        <h1 class="promo-title">Nyerj egy iPhone-t!</h1>
+        <p class="promo-subtitle">Jimmy's Kebab nagy nyereményjáték</p>
+        <p class="promo-cta">Részletek a kasszánál!</p>
+      </section>
+    </div>
 
     <script src="./config.js"></script>
     <script src="./app.js"></script>
