@@ -50,6 +50,7 @@ const debugToken = process.env.ADMIN_TOKEN || '';
 const publicDir = path.join(__dirname, '..', 'public');
 const ordersIndex = path.join(publicDir, 'orders', 'index.html');
 const menuIndex = path.join(publicDir, 'menu', 'index.html');
+const gameIndex = path.join(publicDir, 'game', 'index.html');
 
 let poolPromise;
 
@@ -380,6 +381,11 @@ const server = http.createServer(async (req, res) => {
 
     if (pathname === '/menu' || pathname === '/menu/') {
       sendFile(res, menuIndex);
+      return;
+    }
+
+    if (pathname === '/game' || pathname === '/game/') {
+      sendFile(res, gameIndex);
       return;
     }
 
