@@ -1,8 +1,9 @@
 :root {
   color-scheme: light;
-  --ink: #17100b;
-  --accent: #dd6d5d;
-  --dark: #17100b;
+  --navy: #16223f;
+  --navy-deep: #0b1428;
+  --orange: #e8772e;
+  --orange-light: #ffb27a;
 }
 
 * {
@@ -55,7 +56,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2vh;
-  background: radial-gradient(circle at 50% 30%, #2a1410 0%, #000000 70%);
+  background: radial-gradient(circle at 50% 30%, var(--navy) 0%, var(--navy-deep) 75%);
   text-align: center;
   padding: 4vh 4vw;
 }
@@ -66,58 +67,33 @@ body {
   height: auto;
 }
 
-.promo-phone {
+.promo-phone-stage {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: float 3.5s ease-in-out infinite;
+  perspective: 1600px;
 }
 
-.phone-body {
-  width: 14vw;
-  max-width: 200px;
-  aspect-ratio: 9 / 19;
-  background: linear-gradient(160deg, #3a3a3c, #0c0c0d);
-  border-radius: 1.6vw;
-  border: 0.4vw solid #1c1c1e;
-  box-shadow:
-    0 0 4vw rgba(221, 109, 93, 0.55),
-    0 1vh 3vh rgba(0, 0, 0, 0.6);
+.promo-phone {
   position: relative;
-  overflow: hidden;
+  width: 18vw;
+  max-width: 260px;
+  animation: float 3.5s ease-in-out infinite;
+  transform-style: preserve-3d;
 }
 
-.phone-notch {
-  position: absolute;
-  top: 1.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 38%;
-  height: 4%;
-  background: #0c0c0d;
-  border-radius: 1vw;
-  z-index: 2;
-}
-
-.phone-screen {
-  position: absolute;
-  inset: 4%;
-  border-radius: 1.2vw;
-  background: linear-gradient(135deg, #ffb199 0%, var(--accent) 50%, #7a2e22 100%);
-  overflow: hidden;
-}
-
-.phone-glow {
-  position: absolute;
-  inset: -50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 60%);
-  animation: spin 6s linear infinite;
+.phone-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 3vw rgba(232, 119, 46, 0.65)) drop-shadow(0 1vh 2vh rgba(0, 0, 0, 0.6));
+  animation: spin3d 6s linear infinite;
 }
 
 .sparkle {
   position: absolute;
-  color: var(--accent);
+  color: var(--orange-light);
   font-size: 2.4vw;
   animation: twinkle 2.4s ease-in-out infinite;
 }
@@ -128,20 +104,23 @@ body {
 .sparkle-4 { bottom: -8%; right: -16%; animation-delay: 1.8s; }
 
 .promo-title {
-  font-size: 6vw;
+  font-size: 4.6vw;
   font-weight: 900;
   margin: 0;
+  line-height: 1.15;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   color: #ffffff;
-  text-shadow: 0 0 2vw rgba(221, 109, 93, 0.8);
+  text-shadow: 0 0 2vw rgba(232, 119, 46, 0.8);
 }
 
 .promo-subtitle {
-  font-size: 2.4vw;
+  font-size: 2.6vw;
   margin: 0;
-  color: var(--accent);
-  font-weight: 700;
+  color: var(--orange-light);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .promo-cta {
@@ -156,9 +135,9 @@ body {
   50% { transform: translateY(-2vh); }
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes spin3d {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
 }
 
 @keyframes twinkle {

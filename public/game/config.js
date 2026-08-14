@@ -1,4 +1,5 @@
 window.GAME_CONFIG = {
-  menuDurationMs: 10000,
+  menuAnimationMs: 9000,
+  menuHoldMs: 4000,
   promoDurationMs: 10000
 };
